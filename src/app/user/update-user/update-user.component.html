@@ -1,0 +1,45 @@
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <label class="col-form-label">Új Felhasználónév</label>
+    <input type="text" id="name" class="form-control"
+           formControlName="username" required>
+
+    <div
+      *ngIf="userForm.controls['username'].invalid && (userForm.controls['username'].dirty || userForm.controls['username'].touched)"
+      class="alert alert-danger">
+      <div *ngIf="userForm.controls['username'].errors?.['required']">
+        A felhasználó név kitöltése kötelező.
+      </div>
+
+      <div *ngIf="userForm.controls['username'].errors?.['minlength']">
+        A felhasználó név minimum 5 karakterből állhat.
+      </div>
+    </div>
+
+    <label class="col-form-label">Új Jelszó</label>
+
+    <input type="password" id="password" class="form-control"
+           formControlName="password" required>
+
+
+    <div
+      *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].dirty || userForm.controls['password'].touched)"
+      class="alert alert-danger">
+      <div *ngIf="userForm.controls['password'].errors?.['required']">
+        A jelszó kitöltése kötelező.
+      </div>
+      <div *ngIf="userForm.controls['password'].errors?.['minlength']">
+        A jelszó minimum 5 karakterből állhat.
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-success form-control"
+      (click)="onSubmit()"
+    >
+      Módosítás
+    </button>
+  </form>
+</div>

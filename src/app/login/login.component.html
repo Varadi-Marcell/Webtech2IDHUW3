@@ -1,0 +1,50 @@
+<div class="row d-flex justify-content-center">
+  <form [formGroup]="loginForm" class="form-control w-50">
+
+    <label>Felhasználónév:</label>
+    <input type="text" class="form-control" formControlName="username"/>
+
+    <div
+      *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"
+      class="alert alert-danger">
+      <div *ngIf="loginForm.controls['username'].errors?.['required']">
+        Nem hagyható üresen!
+      </div>
+    </div>
+
+
+    <label>Jelszó:</label>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="password"
+    />
+    <div
+      *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+      class="alert alert-danger">
+      <div *ngIf="loginForm.controls['password'].errors?.['required']">
+        Nem hagyható üresen!
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-success form-control"
+      (click)="login()"
+      [disabled]="loginForm?.invalid"
+    >
+      Bejelentkezés
+    </button>
+
+    <div style="padding-top: 10px">
+      <button
+        type="button"
+        class="btn btn-primary form-control"
+        (click)="register()"
+      >
+        Regisztráció
+      </button>
+    </div>
+  </form>
+
+</div>

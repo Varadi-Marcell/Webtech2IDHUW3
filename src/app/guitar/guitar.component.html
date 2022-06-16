@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <mat-grid-list cols="3" rowHeight="4:4">
+      <mat-grid-tile *ngFor="let guitar of guitars; let i = index">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <img src="https://5.imimg.com/data5/JM/QA/MY-8644468/guitar-500x500.jpg" class="card-img-top">
+            <p class="card-text">Márka: {{guitar.brand}}</p>
+            <p class="card-text">Név: {{guitar.name}}</p>
+            <p class="card-text">Ár: {{guitar.price}}</p>
+            <a [routerLink]="'/view-guitar/' + guitar._id" class="btn btn-success">Megtekintés</a>
+            <a [routerLink]="'/guitar-update/' + guitar._id" class="btn btn-primary">Módosítás</a>
+            <a class="btn btn-danger" (click)="delete(guitar._id)" >Törlés</a>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

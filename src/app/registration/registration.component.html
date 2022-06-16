@@ -1,0 +1,43 @@
+<div class="row d-flex justify-content-center">
+<form [formGroup]="registerForm" (ngSubmit)="register()" class="form-control w-50">
+    <label class="col-form-label">Felhasználónév</label>
+    <input type="text" id="name" class="form-control"
+           formControlName="username" required>
+
+    <div
+      *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)"
+      class="alert alert-danger">
+      <div *ngIf="registerForm.controls['username'].errors?.['required']">
+        A felhasználó név kitöltése kötelező.
+      </div>
+
+      <div *ngIf="registerForm.controls['username'].errors?.['minlength']">
+        A felhasználó név minimum 5 karakterből állhat.
+      </div>
+    </div>
+
+    <label class="col-form-label">Jelszó</label>
+
+    <input type="password" id="password" class="form-control"
+           formControlName="password" required>
+
+    <div
+      *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
+      class="alert alert-danger">
+      <div *ngIf="registerForm.controls['password'].errors?.['required']">
+        A jelszó kitöltése kötelező.
+      </div>
+      <div *ngIf="registerForm.controls['password'].errors?.['minlength']">
+        A jelszó minimum 5 karakterből állhat.
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-success form-control"
+      (click)="register()"
+    >
+      Regisztrálás
+    </button>
+  </form>
+</div>

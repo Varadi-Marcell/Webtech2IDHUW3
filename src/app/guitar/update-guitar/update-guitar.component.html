@@ -1,0 +1,49 @@
+<div class="container">
+  <form [formGroup]="guitarForm" (ngSubmit)="onSubmit()">
+
+    <label class="col-form-label">Új Márka</label>
+    <input type="text" id="brand" class="form-control"
+           formControlName="brand" required>
+
+    <div
+      *ngIf="guitarForm.controls['brand'].invalid && (guitarForm.controls['brand'].dirty || guitarForm.controls['brand'].touched)"
+      class="alert alert-danger">
+      <div *ngIf="guitarForm.controls['brand'].errors?.['required']">
+        A Márka kitöltése kötelező.
+      </div>
+
+      <div *ngIf="guitarForm.controls['brand'].errors?.['minlength']">
+        A Márka minimum 5 karakterből állhat.
+      </div>
+    </div>
+
+    <label class="col-form-label">Új Név</label>
+
+    <input type="text" id="name" class="form-control"
+           formControlName="name" required>
+
+
+    <div
+      *ngIf="guitarForm.controls['name'].invalid && (guitarForm.controls['name'].dirty || guitarForm.controls['name'].touched)"
+      class="alert alert-danger">
+      <div *ngIf="guitarForm.controls['name'].errors?.['required']">
+        A Név kitöltése kötelező.
+      </div>
+      <div *ngIf="guitarForm.controls['name'].errors?.['minlength']">
+        A Név minimum 5 karakterből állhat.
+      </div>
+    </div>
+
+    <label class="col-form-label">Új Ár</label>
+    <input type="number" id="price" class="form-control"
+           formControlName="price" required>
+
+    <button
+      type="button"
+      class="btn btn-success form-control"
+      (click)="onSubmit()"
+    >
+      Módosítás
+    </button>
+  </form>
+</div>
